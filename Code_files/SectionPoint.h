@@ -10,40 +10,50 @@
 */
 #ifndef SECTION_POINTS
 #define SECTION_POINTS
+
 class Point {
+
 public:
+
 	explicit Point(double x = 0, double y = 0)
 		: X(new double(x)), Y(new double(y)){}
 
-	void setValue(double x, double y);// Setting values x,y to field's values of class 
+    // Setting values x,y to field's values of class
+	void setValue(double x, double y);
 
-	void ConsolePrintValues() const; // Useful methods of printing values X and Y to console
+    // Useful methods of printing values X and Y to console
+	void ConsolePrintValues() const;
 
 	// Coordinate of point
 	double* X;
 	double* Y;
 	
 };
+
+
 class Section {
 
 public:
 
-	Section() // Default constructor with zeros values
+    // Default constructor with zeros values
+	Section()
 		: p0(Point(0, 0)), p1(Point(0, 0)),
         tg(0), angle(0), speed(), distance(0), angleToRotation()
 	{}
 
-	explicit Section(Point initialPoint, Point finalPoint = Point(0, 0)) // Constructor with two Point objects as arguments
+    // Constructor with two Point objects as arguments
+	explicit Section(Point initialPoint, Point finalPoint = Point(0, 0))
 		: distance(), angleToRotation(), angle(), speed(), p0(initialPoint), p1(finalPoint), tg()
 	{ AngleAndDistanceComputing(initialPoint, finalPoint); }
 
+    // Method calculating angle to Rotation with previous section angle
+	float anglePrevSection(Section previousSection);
 
-	float anglePrevSection(Section previousSection);			// Method calculating angle to Rotation with previous section angle
+    // Method calculating angle to Rotation with next section angle
+	float angleNextSection(Section nextSection);
 
-	float angleNextSection(Section nextSection);				// Method calculating angle to Rotation with next section angle
-
-	void setPoints(Point init, Point fin);						// Method for setting point values, X and Y. And setting values Distance and Angle
-
+    // Method for setting point values, X and Y. And setting values Distance and Angle
+	void setPoints(Point init, Point fin);
 
 	double distance;		// Distance from Point to Point
 	double angleToRotation; // Angle of Rotation, delta angeles
@@ -52,10 +62,11 @@ public:
 
 private:
 
-	void AngleAndDistanceComputing(Point init, Point fin);		//Calculating tangens, angels and distance with coordinates X and Y of two Points objects
+//Calculating tangents, angels and distance with coordinates X and Y of two Points objects
+	void AngleAndDistanceComputing(Point init, Point fin);
 	Point p0;
 	Point p1;
 	float tg;
-
 };
+
 #endif // SECTION_POINTS

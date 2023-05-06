@@ -8,7 +8,6 @@ ________________________________________________________________________________
 		this->X = new double(x);
 		this->Y = new double(y);
 	}
-
 	void Point::ConsolePrintValues() const {			// Useful methods of printing values X and Y to console
 		std::cout << "X = " << *this->X << "\tY = " << *this->Y << std::endl;
 	}
@@ -26,12 +25,10 @@ ________________________________________________________________________________
 		angleToRotation = previousSection.angle - this->angle;
 		return (float)angleToRotation;
 	}
-
 	float Section::angleNextSection(Section nextSection) {				// Method calculating angle to Rotation with next section angle
 		angleToRotation = nextSection.angle - this->angle;
 		return (float)angleToRotation;
 	}
-
 	void Section::setPoints(Point init, Point fin) {					// Method for setting point values, X and Y. And setting values Distance and Angle
 		AngleAndDistanceComputing(init, fin);
 		p0.X = init.X;
