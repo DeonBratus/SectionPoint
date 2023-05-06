@@ -29,18 +29,20 @@ int main() {
 
     //Making file *.csv
     std::ofstream dataFile("data.csv");
-    //Output error
-    if(dataFile == nullptr) std::cout << "error!"<<std::endl;
+
     // Writing header
     dataFile <<"#," << "Distance," << "Angle Rot," <<  "Speed" << std::endl;
+
     int numString = 0; // Number string values
     float totalDistance = 0;
+
     // Writing values to *.csv file, like a table, ',' is separator
     for (Section & i : s) {
         i.speed = 0.5f;
         dataFile << numString++ << "," << i.distance << "," << i.angleToRotation << "," << i.speed << std::endl;
         totalDistance+=(float)i.distance;
     }
+
     std::cout << "Writing complete!" << std::endl;
     std::cout << "Total distance " << totalDistance << std::endl;
     std::cout << "Initial Point " << "x:" << *p[0].X << " y:" << *p[0].Y << std::endl;
