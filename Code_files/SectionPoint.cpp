@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include "SectionPoint.h"
+#include <cmath>
 
 using namespace std;
 
@@ -11,7 +12,7 @@ ________________________________________________________________________________
 		this->Y = new double(y);
 	}
 
-	void Point::ConsolePrintValues() {			// Useful methods of printing values X and Y to console
+	void Point::ConsolePrintValues() const {			// Useful methods of printing values X and Y to console
 		std::cout << "X = " << *this->X << "\tY = " << *this->Y << std::endl;
 	}
 	// Coordinate of point
@@ -20,20 +21,19 @@ ________________________________________________________________________________
 
 /*______________________________________________________________________________________________________________
 	Methods and parameters of Section class. 
-	Section includies two Point object, computing distances and angles
+	Section includes two Point object, computing distances and angles
 	Rotation angle must be calculated out of the class, and last section doesn't have it
 ________________________________________________________________________________________________________________*/
 
 	float Section::anglePrevSection(Section previousSection) {			// Method calculating angle to Rotation with previous section angle
 		angleToRotation = previousSection.angle - this->angle;
-		return angleToRotation;
+		return (float)angleToRotation;
 	}
 
 	float Section::angleNextSection(Section nextSection) {				// Method calculating angle to Rotation with next section angle
 		angleToRotation = nextSection.angle - this->angle;
-		return angleToRotation;
+		return (float)angleToRotation;
 	}
-
 	void Section::setPoints(Point init, Point fin) {					// Method for setting point values, X and Y. And setting values Distance and Angle
 		AngleAndDistanceComputing(init, fin);
 		p0.X = init.X;
@@ -56,4 +56,4 @@ ________________________________________________________________________________
 	// Private
 	Point p0;				// Initial point
 	Point p1;				// Final point
-	float tg;				// tangens of angle
+	float tg;				// tangents of angle
