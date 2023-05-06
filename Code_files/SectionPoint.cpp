@@ -1,11 +1,8 @@
 ﻿#include <iostream>
 #include "SectionPoint.h"
 #include <cmath>
-
-using namespace std;
-
 /*____________________________________________________________________________________________________________
-	Methods and parameter of point class. Point includies two parameters, it's X and Y coordinates			  
+	Methods and parameter of point class. Point includes two parameters, it's X and Y coordinates
 ______________________________________________________________________________________________________________*/
 	void Point::setValue(double x, double y) {	// Setting values x,y to field's values of class 
 		this->X = new double(x);
@@ -34,6 +31,7 @@ ________________________________________________________________________________
 		angleToRotation = nextSection.angle - this->angle;
 		return (float)angleToRotation;
 	}
+
 	void Section::setPoints(Point init, Point fin) {					// Method for setting point values, X and Y. And setting values Distance and Angle
 		AngleAndDistanceComputing(init, fin);
 		p0.X = init.X;
@@ -41,18 +39,16 @@ ________________________________________________________________________________
 		p1.Y = fin.Y;
 		p1.X = fin.X;
 	}
-	void Section::AngleAndDistanceComputing(Point init, Point fin) {	//Calculating tangens, angels and distance with coordinates X and Y of two Points objects
+	void Section::AngleAndDistanceComputing(Point init, Point fin) {	//Calculating tangents, angels and distance with coordinates X and Y of two Points objects
 		this->tg = (*fin.Y - *init.Y) / (*fin.X - *init.X);
 		angle = atan(tg) * 57.29577;
 		this->distance = sqrt(pow((*init.X - *fin.X), 2) + pow((*init.Y - *fin.Y), 2));
 	}
-
 	// Public 
 	double distance;		// Distance from Point to Point
 	double angleToRotation; // Angle of Rotation, delta angeles
 	double angle;			// angle by X axis
 	float speed;			// speed of movement of section
-
 	// Private
 	Point p0;				// Initial point
 	Point p1;				// Final point
