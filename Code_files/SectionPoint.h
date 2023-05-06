@@ -30,7 +30,6 @@ public:
 	
 };
 
-
 class Section {
 
 public:
@@ -46,6 +45,11 @@ public:
 		: distance(), angleToRotation(), angle(), speed(), p0(initialPoint), p1(finalPoint), tg()
 	{ AngleAndDistanceComputing(initialPoint, finalPoint); }
 
+    // Constructor with four coordinate's values
+    Section (float x0, float y0, float x1 ,float y1)
+    : p0(Point(x0,y0)), p1(Point(x1,y1))
+    { AngleAndDistanceComputing(Point(x0,y0), Point(x1, y1)); }
+
     // Method calculating angle to Rotation with previous section angle
 	float anglePrevSection(Section previousSection);
 
@@ -55,6 +59,10 @@ public:
     // Method for setting point values, X and Y. And setting values Distance and Angle
 	void setPoints(Point init, Point fin);
 
+    // Method setting coordinate initial point and final point
+    void setCoordinates(float x0, float y0, float x1 , float y1);
+
+    // Variables
 	double distance;		// Distance from Point to Point
 	double angleToRotation; // Angle of Rotation, delta angeles
 	double angle;			// angle by X axis

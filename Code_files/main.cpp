@@ -1,4 +1,5 @@
-#include <iostream>			//Library of input and output
+#include <iostream>			//input, output
+#include <fstream>
 #include "SectionPoint.h"	// Header file with Point and Section classes
 
 int main() {
@@ -16,16 +17,33 @@ int main() {
     p[0].setValue(x0, y0);
     p[1].setValue(x1, y1);
     p[2].setValue(x2, y2);
-
     //transfer points to Section
     s[0].setPoints(p[0], p[1]);  // Assign points p[0]---p[1]
     s[1].setPoints(p[1], p[2]);  // Assign points p[1]---p[2]
-
     // Set rotation angle with next section
     s[0].angleNextSection(s[1]);
 
-    //Output values distance and rotation angle
-    std::cout << "Distance\t" << s[0].distance << std::endl << "Rotate angle\t" << s[0].angleToRotation << std::endl;
+/*_____________________________________________________________________________
+                            Writing to file code
+ _____________________________________________________________________________*/
 
+    //Making file *.csv
+    std::ofstream dataFile("data.csv");
+    //Output error
+    if(dataFile == nullptr) std::cout << "error!"<<std::endl;
+    // Writing header
+    dataFile <<"#," << "Distance," << "Angle Rot," <<  "Speed" << std::endl;
+    int numString = 0; // Number string values
+    float totalDistance = 0;
+    // Writing values to *.csv file, like a table, ',' is separator
+    for (Section & i : s) {
+        i.speed = 0.5f;
+        dataFile << numString++ << "," << i.distance << "," << i.angleToRotation << "," << i.speed << std::endl;
+        totalDistance+=(float)i.distance;
+    }
+    std::cout << "Writing complete!" << std::endl;
+    std::cout << "Total distance " << totalDistance << std::endl;
+    std::cout << "Initial Point " << "x:" << *p[0].X << " y:" << *p[0].Y << std::endl;
+    std::cout << "Final Point " << "x:" << *p[quantityPoints-1].X << " y:" << *p[quantityPoints-1].Y << std::endl;
     return 0;
 }
