@@ -35,7 +35,7 @@ int main() {
                             Writing to file code
  _____________________________________________________________________________*/
     string pathToMakedFile;
-    cout<<"Set pase to save file" << endl << "Path: ";
+    cout<<"Set path to save file" << endl << "Path: ";
     cin >> pathToMakedFile;
 
     //Making file *.csv
