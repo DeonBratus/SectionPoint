@@ -1,7 +1,9 @@
 #include <iostream>			//input, output
 #include <fstream>
 #include "SectionPoint.h"	// Header file with Point and Section classes
+#include <string>
 
+using namespace std;
 int main() {
 
     const short quantityPoints = 3;
@@ -10,8 +12,14 @@ int main() {
     Section s[quantityPoints - 1];  // Creating Sections array one less than the number of points
 
     // Declaring and initializing with console reading of variables
+    cout << "Write your coordinates: " << endl;
     int x0, y0, x1, y1, x2, y2;
-    std::cin >> x0 >> y0 >> x1 >> y1 >> x2 >> y2;
+    cout << "Zero point:";
+    cin >> x0 >> y0;
+    cout << "1st point:";
+    cin >> x1 >> y1;
+    cout << "2nd point:";
+    cin >> x2 >> y2;
 
     //transfer coordinates values to Points
     p[0].setValue(x0, y0);
@@ -26,10 +34,13 @@ int main() {
 /*_____________________________________________________________________________
                             Writing to file code
  _____________________________________________________________________________*/
+    string pathToMakedFile;
+    cout<<"Set pase to save file" << endl << "Path: ";
+    cin >> pathToMakedFile;
 
     //Making file *.csv
-    std::ofstream dataFile("data.csv");
-
+    ofstream dataFile(pathToMakedFile+".csv");
+    if(dataFile.is_open() == NULL) cout <<"error"<<endl;
     // Writing header
     dataFile <<"#," << "Distance," << "Angle Rot," <<  "Speed" << std::endl;
 
@@ -43,9 +54,12 @@ int main() {
         totalDistance+=(float)i.distance;
     }
 
-    std::cout << "Writing complete!" << std::endl;
-    std::cout << "Total distance " << totalDistance << std::endl;
-    std::cout << "Initial Point " << "x:" << *p[0].X << " y:" << *p[0].Y << std::endl;
-    std::cout << "Final Point " << "x:" << *p[quantityPoints-1].X << " y:" << *p[quantityPoints-1].Y << std::endl;
+    cout << "Writing complete!" << std::endl;
+    cout << "Initial Point " << "x:" << *p[0].X << " y:" << *p[0].Y << endl;
+    cout << "Final Point " << "x:" << *p[quantityPoints-1].X << " y:" << *p[quantityPoints-1].Y << std::endl;
+    cout << "Total distance " << totalDistance <<endl;
+
+    int StopValue;
+    cin >> StopValue;
     return 0;
 }
