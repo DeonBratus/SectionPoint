@@ -34,21 +34,21 @@ int main() {
 /*_____________________________________________________________________________
                             Writing to file code
  _____________________________________________________________________________*/
+
+    //Making file *.csv
     string pathToMakedFile;
     cout<<"Set path to save file" << endl << "Path: ";
     cin >> pathToMakedFile;
-
-    //Making file *.csv
     ofstream dataFile(pathToMakedFile+".csv");
     if(dataFile.is_open() == NULL) cout <<"error"<<endl;
+
     // Writing header
     dataFile <<"#," << "Distance," << "Angle Rot," <<  "Speed" << std::endl;
-
     int numString = 0; // Number string values
     float totalDistance = 0;
 
     // Writing values to *.csv file, like a table, ',' is separator
-    for (Section & i : s) {
+    for (auto & i : s) {
         i.speed = 0.5f;
         dataFile << numString++ << "," << i.distance << "," << i.angleToRotation << "," << i.speed << std::endl;
         totalDistance+=(float)i.distance;
