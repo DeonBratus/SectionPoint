@@ -1,25 +1,25 @@
 #include <iostream>			//input, output
-#include <fstream>
+#include <fstream>          //writing to file
 #include "SectionPoint.h"	// Header file with Point and Section classes
-#include <string>
+#include <string>           //string class
 
 using namespace std;
+
 int main() {
 
-    const short quantityPoints = 3;
-
-    Point p[quantityPoints];        // Creating Points array and define values XY coordinates
-    Section s[quantityPoints - 1];  // Creating Sections array one less than the number of points
-
     // Declaring and initializing with console reading of variables
-    cout << "Write your coordinates: " << endl;
+    cout << "Enter coordinates: " << endl;
     int x0, y0, x1, y1, x2, y2;
-    cout << "Zero point:";
+    cout << "Enter coordinates of first point:";
     cin >> x0 >> y0;
-    cout << "1st point:";
+    cout << "Enter coordinates of second point:";
     cin >> x1 >> y1;
-    cout << "2nd point:";
+    cout << "Enter coordinates of third point:";
     cin >> x2 >> y2;
+
+    const short quantityPoints = 3;     // var quantity Points
+    Point p[quantityPoints];            // Creating Points array and define values XY coordinates
+    Section s[quantityPoints - 1];      // Creating Sections array one less than the number of points
 
     //transfer coordinates values to Points
     p[0].setValue(x0, y0);
@@ -30,36 +30,29 @@ int main() {
     s[1].setPoints(p[1], p[2]);  // Assign points p[1]---p[2]
     // Set rotation angle with next section
     s[0].angleNextSection(s[1]);
-
 /*_____________________________________________________________________________
                             Writing to file code
  _____________________________________________________________________________*/
-    string pathToMakedFile;
-    cout<<"Set path to save file" << endl << "Path: ";
+    string pathToMakedFile; // string and name of *.scv file
+    cout<<"Enter path of file" << endl << "Path: ";
     cin >> pathToMakedFile;
 
-    //Making file *.csv
-    ofstream dataFile(pathToMakedFile+".csv");
-    if(dataFile.is_open() == NULL) cout <<"error"<<endl;
-    // Writing header
-    dataFile <<"#," << "Distance," << "Angle Rot," <<  "Speed" << std::endl;
+    ofstream dataFile = createCSV(pathToMakedFile); //create and write title of *.scv file
 
     int numString = 0; // Number string values
     float totalDistance = 0;
 
     // Writing values to *.csv file, like a table, ',' is separator
     for (Section & i : s) {
-        i.speed = 0.5f;
         dataFile << numString++ << "," << i.distance << "," << i.angleToRotation << "," << i.speed << std::endl;
         totalDistance+=(float)i.distance;
     }
-
+    // total information
     cout << "Writing complete!" << std::endl;
-    cout << "Initial Point " << "x:" << *p[0].X << " y:" << *p[0].Y << endl;
-    cout << "Final Point " << "x:" << *p[quantityPoints-1].X << " y:" << *p[quantityPoints-1].Y << std::endl;
     cout << "Total distance " << totalDistance <<endl;
 
     int StopValue;
     cin >> StopValue;
+
     return 0;
 }

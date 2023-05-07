@@ -77,4 +77,7 @@ private:
 	float tg;
 };
 
+//create scv file and write title
+std::ofstream createCSV(const std::string& pathAndName);
+
 #endif // SECTION_POINTS

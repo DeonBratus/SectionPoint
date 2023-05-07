@@ -1,6 +1,8 @@
 ﻿#include <iostream>
 #include "SectionPoint.h"
 #include <cmath>
+#include <fstream>
+#include <string>
 /*____________________________________________________________________________________________________________
 	    Methods and parameter of point class. Point includes two parameters, it's X and Y coordinates
 ______________________________________________________________________________________________________________*/
@@ -45,6 +47,7 @@ ________________________________________________________________________________
 		p1.Y = fin.Y;
 		p1.X = fin.X;
 	}
+
     // Method setting coordinate initial point and final point
     void Section::setCoordinates(float x0, float y0, float x1, float y1)  {
     *this->p0.X = x0; *this->p0.Y = y0;
@@ -58,6 +61,7 @@ ________________________________________________________________________________
 		angle = atan(tg) * 57.29577;
 		this->distance = sqrt(pow((*init.X - *fin.X), 2) + pow((*init.Y - *fin.Y), 2));
 	}
+
     // Public
 	double distance;		// Distance from Point to Point
 	double angleToRotation; // Angle of Rotation, delta angeles
@@ -67,3 +71,18 @@ ________________________________________________________________________________
 	Point p0;				// Initial point
 	Point p1;				// Final point
 	float tg;				// tangents of angle
+/*________________________________________________________________________________________________________________
+                                    Additional functions
+ _______________________________________________________________________________________________________________*/
+
+    // function of creating *.scv table with title. return ofstream class
+    std::ofstream createCSV(const std::string& pathAndName) {
+        //create scv file
+        std::ofstream dataCSV(pathAndName + ".csv");
+        //Check of existing file
+        if(dataCSV.is_open() == NULL) std::cout << "error" << std::endl;
+        // Writing header
+        dataCSV << "#," << "Distance," << "Angle Rot," << "Speed" << std::endl;
+        //return file
+        return  dataCSV;
+    }
