@@ -6,14 +6,8 @@
 #include "stdio.h"
 
 using namespace std;
-void StrCat(char *to,  char *from) {
-    char *p = to;
-    for(;*p != '\0'; ++p) {  }
-    *p = *from;
-    for(;*p !='\0';++p) *p = *from++;
-}
-int main() {
 
+int main() {
     cout << "Enter <your_path_to_file> : " ;
     string inputCom;
     cin >> inputCom;
