@@ -78,6 +78,8 @@ private:
 };
 
 //create scv file and write title
-std::ofstream createCSV(const std::string& pathAndName);
+std::ofstream &createCSV(const std::string& pathAndName);
+
+std::string runPythonFile(std::string &filePath);
 
 #endif // SECTION_POINTS

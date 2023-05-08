@@ -1,17 +1,26 @@
 #include <iostream>			//input, output
-#include <fstream>          //writing to file
 #include "SectionPoint.h"	// Header file with Point and Section classes
 #include <string>           //string class
-#include <cstdlib>          //system
-#include "stdio.h"
+#include <fstream>
 
 using namespace std;
 
 int main() {
-    cout << "Enter <your_path_to_file> : " ;
-    string inputCom;
-    cin >> inputCom;
-    inputCom = "python " + inputCom;
-    system(inputCom.c_str() );
+    string pathToFile;
+    cin >> pathToFile;
+
+    ifstream readingFile(pathToFile);
+
+    if(!readingFile) {
+        std::cerr <<"Error! File not found!" << std::endl;
+        return 1;
+    }
+    std::string str;
+    while (std::getline(readingFile, str)) {
+        std::cout << str <<std::endl;
+    }
+    readingFile.close();
+
+
     return 0;
 }
