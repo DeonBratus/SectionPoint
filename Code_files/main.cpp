@@ -1,26 +1,15 @@
 #include <iostream>			//input, output
-#include "SectionPoint.h"	// Header file with Point and Section classes
 #include <string>           //string class
-#include <fstream>
-
-using namespace std;
+#include "SectionPoint.h"	// Header file with Point and Section classes
 
 int main() {
-    string pathToFile;
-    cin >> pathToFile;
+    int quantPoint = 21;                                        //Quantity of point and coordinates
+    std::string strArray[quantPoint + 1];                       //create array string more by one
+    Point points[quantPoint];                                   // create points
 
-    ifstream readingFile(pathToFile);
-
-    if(!readingFile) {
-        std::cerr <<"Error! File not found!" << std::endl;
-        return 1;
-    }
-    std::string str;
-    while (std::getline(readingFile, str)) {
-        std::cout << str <<std::endl;
-    }
-    readingFile.close();
-
+    std::string pathToFile; std::cin >> pathToFile;             //Take path to *.csv file
+    FileToLine(pathToFile,strArray);                            //reading *.csv file and convert data to line( string)
+    parseLineToPoint(strArray, points,quantPoint); //parsing
 
     return 0;
 }
