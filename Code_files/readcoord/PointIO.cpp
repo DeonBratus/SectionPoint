@@ -9,13 +9,15 @@ using namespace std;
 // Read data file and convert data to string array
 // assign path to *.csv and array of string
 void FileToLine(const string& pathToFile,string strArray[]) {
-    ifstream readingFile(pathToFile);                                   // open file
-    if (!readingFile) {cerr << "Error! File not found!" << std::endl;}      // Check existing
+
+    ifstream readingFile(pathToFile);                                       // open file
+    if (!readingFile) {cerr << "Error! File not found!" << std::endl;}          // Check existing
     int numberLine = 0;
-    while (std::getline(readingFile, strArray[numberLine]))       //read value and put to array of string
-        numberLine++;
+    while (std::getline(readingFile, strArray[numberLine])) numberLine++;//read value and put to array of string
+
     readingFile.close();    //close file
     cout << "Reading and copying files has been completed!" <<endl;
+
 }
 
 // Parsing string format x,y to point X and Y coordinates

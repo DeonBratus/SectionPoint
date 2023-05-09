@@ -19,18 +19,25 @@ int main() {
     cout << "Enter path and name of file:";
     string pathToCreate; cin >> pathToCreate;
     Section sections[quantPoint-1];
+
     //transfer point values to section
     for(int i = 0; i !=quantPoint-1; i++) sections[i].setPoints(points[i], points[i + 1]);
+
     //create file
     ofstream dataFile(pathToCreate + ".csv");
     dataFile << "#," << "Distance," << "Angle Rot," << "Speed" << std::endl;
+
     //calculate angle rotate
     for (int i = 0; i != quantPoint - 2; i++)
         sections[i].angleNextSection(sections[i+1]);
+
     //transfer data to file
     for (int i = 0; i != quantPoint; i++)
         dataFile << i << "," << sections[i].distance << ","
         << sections[i].angleToRotation << "," << sections[i].speed << std::endl;
     cout << "Your file has been save!";
+
+
+
     return 0;
 }
