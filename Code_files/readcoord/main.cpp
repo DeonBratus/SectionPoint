@@ -6,7 +6,7 @@
 using namespace std;
 int main() {
 
-    int quantPoint = 101;                                        //Quantity of point and coordinates
+    int const quantPoint = 20;                                        //Quantity of point and coordinates
     string strArray[quantPoint + 1];                            //create array string more by one
     Point points[quantPoint];                                   // create points
 
@@ -18,10 +18,10 @@ int main() {
 
     cout << "Enter path and name of file:";
     string pathToCreate; cin >> pathToCreate;
-    Section sections[quantPoint-1];
+    Section sections[quantPoint - 1];
 
     //transfer point values to section
-    for(int i = 0; i !=quantPoint-1; i++) sections[i].setPoints(points[i], points[i + 1]);
+    for(int i = 0; i !=quantPoint - 1; i++) sections[i].setPoints(points[i], points[i + 1]);
 
     //create file
     ofstream dataFile(pathToCreate + ".csv");
@@ -32,12 +32,10 @@ int main() {
         sections[i].angleNextSection(sections[i+1]);
 
     //transfer data to file
-    for (int i = 0; i != quantPoint; i++)
+    for (int i = 0; i != quantPoint - 1; i++)
         dataFile << i << "," << sections[i].distance << ","
         << sections[i].angleToRotation << "," << sections[i].speed << std::endl;
     cout << "Your file has been save!";
-
-
 
     return 0;
 }
