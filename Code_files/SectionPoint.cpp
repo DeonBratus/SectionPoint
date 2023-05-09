@@ -1,7 +1,6 @@
 ﻿#include <iostream>
 #include "SectionPoint.h"
 #include <cmath>
-#include <fstream>
 #include <string>
 /*____________________________________________________________________________________________________________
 	    Methods and parameter of point class. Point includes two parameters, it's X and Y coordinates
@@ -71,18 +70,3 @@ ________________________________________________________________________________
 	Point p0;				// Initial point
 	Point p1;				// Final point
 	float tg;				// tangents of angle
-/*________________________________________________________________________________________________________________
-                                    Additional functions
- _______________________________________________________________________________________________________________*/
-
-    // function of creating *.scv table with title. return ofstream class
-    std::ofstream createCSV(const std::string& pathAndName) {
-        //create scv file
-        std::ofstream dataCSV(pathAndName + ".csv");
-        //Check of existing file
-        if(dataCSV.is_open() == NULL) std::cout << "error" << std::endl;
-        // Writing header
-        dataCSV << "#," << "Distance," << "Angle Rot," << "Speed" << std::endl;
-        //return file
-        return  dataCSV;
-    }

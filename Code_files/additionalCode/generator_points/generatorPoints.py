@@ -11,4 +11,4 @@ with open('route_points.csv', 'w', newline='') as csvfile:
     for point in route_points:
         writer.writerow(point)
 # Print to console
-print("Массив точек маршрута сохранен в файл 'route_points.csv'")
+print("Array has been save to file 'route_points.csv'")
