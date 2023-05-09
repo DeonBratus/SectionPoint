@@ -2,7 +2,7 @@ import csv
 import random
 
 # Generating coordinates values
-route_points = [(i, random.uniform(-10, 10)) for i in range(20)]
+route_points = [(i, random.uniform(-50, 50)) for i in range(100)]
 
 # Save to scv file
 with open('route_points.csv', 'w', newline='') as csvfile:
