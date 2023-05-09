@@ -3,30 +3,6 @@
 #include "SectionPoint.h"
 using namespace std;
 /*_______________________________________________________________________________________________________________
-                                         Create and run files
-_______________________________________________________________________________________________________________*/
-
-// function of creating *.scv table with title. return ofstream class
-// doesn't work
-std::ofstream &createCSV(const std::string& pathAndName) {
-    //create scv file
-    std::ofstream dataCSV(pathAndName + ".csv");
-    //Check of existing file
-    if(dataCSV.is_open() == NULL) std::cout << "error" << std::endl;
-    // Writing header
-    dataCSV << "#," << "Distance," << "Angle Rot," << "Speed" << std::endl;
-    //return file
-    return  dataCSV;
-}
-
-// Run python script in path
-std::string runPythonFile(std::string& filePath) {
-    std::cout << "Enter path to open python file:";
-    filePath = "python " + filePath;
-    system(filePath.c_str()); // write to system command of running python script
-    return filePath;
-}
-/*_______________________________________________________________________________________________________________
                             Work with read and convert received data
 //_______________________________________________________________________________________________________________*/
 

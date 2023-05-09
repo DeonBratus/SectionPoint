@@ -77,11 +77,6 @@ private:
 	float tg;
 };
 
-//create scv file and write title
-std::ofstream &createCSV(const std::string& pathAndName);
-
-std::string runPythonFile(std::string &filePath);
-
 void FileToLine(const std::string& pathToFile,std::string strArray[]);
 
 void parseLineToPoint(std::string str[], Point points[], int quantity = 0);
