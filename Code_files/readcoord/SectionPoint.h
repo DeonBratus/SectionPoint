@@ -11,6 +11,8 @@
 #ifndef SECTION_POINTS
 #define SECTION_POINTS
 
+#include <string>
+
 class Point {
 
 public:
@@ -77,7 +79,7 @@ private:
 	float tg;
 };
 
-void FileToLine(const std::string& pathToFile,std::string strArray[]);
+void readLineFile(const std::string& pathToFile, std::string strArray[]);
 
 void parseLineToPoint(std::string str[], Point points[], int quantity = 0);
 

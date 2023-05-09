@@ -13,7 +13,7 @@ int main() {
     cout << "Enter absolute path to *.scv file for reading:";
     string pathToFile; std::cin >> pathToFile;                  //Take path to *.csv file
 
-    FileToLine(pathToFile,strArray);                            //reading *.csv file and convert data to line( string)
+    readLineFile(pathToFile, strArray);                            //reading *.csv file and convert data to line( string)
     parseLineToPoint(strArray, points,quantPoint); //parsing
 
     cout << "Enter path and name of file:";

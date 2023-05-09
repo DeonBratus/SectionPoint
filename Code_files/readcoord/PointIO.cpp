@@ -9,7 +9,7 @@ using namespace std;
 
 // Read data file and convert data to string array
 // assign path to *.csv and array of string
-void FileToLine(const string& pathToFile,string strArray[]) {
+void readLineFile(const string &pathToFile, string strArray[]) {
 
     ifstream readingFile(pathToFile);                                       // open file
     if (!readingFile) {cerr << "Error! File not found!" << std::endl;}          // Check existing
