@@ -21,7 +21,7 @@ public:
 		: X(new double(x)), Y(new double(y)){}
 
     // Setting values x,y to field's values of class
-	void setValue(double x, double y);
+	void setCoordinate(double x, double y);
 
     // Useful methods of printing values X and Y to console
 	void ConsolePrintValues() const;
@@ -56,7 +56,7 @@ public:
 	float anglePrevSection(Section previousSection);
 
     // Method calculating angle to Rotation with next section angle
-	float angleNextSection(Section nextSection);
+	float setAngleFromNextSection(Section nextSection);
 
     // Method for setting point values, X and Y. And setting values Distance and Angle
 	void setPoints(Point init, Point fin);
@@ -79,8 +79,8 @@ private:
 	float tg;
 };
 
-void readLineFile(const std::string& pathToFile, std::string strArray[]);
+void scanLineReading(const std::string& pathToFile, std::string strArray[]);
 
-void parseLineToPoint(std::string str[], Point points[], int quantity = 0);
+void parsingLineToPoint(std::string str[], Point points[], int quantity = 0);
 
 #endif // SECTION_POINTS

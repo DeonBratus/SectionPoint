@@ -11,11 +11,12 @@ int main() {
 
     cout << "Enter path to data of route:";
     string pathToFile; std::cin >> pathToFile;                  //Take path to *.csv file
-    readLineFile(pathToFile, strArray);
+    scanLineReading(pathToFile, strArray);
 
     for(int i = 1; i != quantPoint;i++) {
         cout << strArray[i] << endl;
     }
+
 
     return 0;
 }

@@ -7,7 +7,7 @@
 ______________________________________________________________________________________________________________*/
 
     // Setting values x,y to field's values of class
-	void Point::setValue(double x, double y) {
+	void Point::setCoordinate(double x, double y) {
 		this->X = new double(x);
 		this->Y = new double(y);
 	}
@@ -33,7 +33,7 @@ ________________________________________________________________________________
 	}
 
     // Method calculating angle to Rotation with next section angle
-	float Section::angleNextSection(Section nextSection) {
+	float Section::setAngleFromNextSection(Section nextSection) {
 		angleToRotation = nextSection.angle - this->angle;
 		return (float)angleToRotation;
 	}

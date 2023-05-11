@@ -9,7 +9,7 @@ using namespace std;
 
 // Read data file and convert data to string array
 // assign path to *.csv and array of string
-void readLineFile(const string &pathToFile, string strArray[]) {
+void scanLineReading(const string &pathToFile, string strArray[]) {
 
     ifstream readingFile(pathToFile);                                       // open file
     if (!readingFile) {cerr << "Error! File not found!" << std::endl;}          // Check existing
@@ -22,7 +22,7 @@ void readLineFile(const string &pathToFile, string strArray[]) {
 }
 
 // Parsing string format x,y to point X and Y coordinates
-void parseLineToPoint(string str[], Point points[], int quantity)
+void parsingLineToPoint(string str[], Point points[], int quantity)
 {
     for(int i = 1; i!=quantity+1; i++) {
 
