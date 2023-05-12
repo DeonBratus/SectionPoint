@@ -1,9 +1,0 @@
-//
-// Created by bratus on 09.05.2023.
-//
-
-#ifndef SECTIONPOINT_SERIALWRITER_H
-#define SECTIONPOINT_SERIALWRITER_H
-
-
-#endif //SECTIONPOINT_SERIALWRITER_H
