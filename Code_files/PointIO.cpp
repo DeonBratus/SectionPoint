@@ -8,7 +8,7 @@ using namespace std;
 
 // Read data file and convert data to string array
 // assign path to *.csv and array of string
-void FileToLine(const string& pathToFile,string strArray[]) {
+int readingFileToString(const string &pathToFile, string strArray[]) {
     ifstream readingFile(pathToFile);                                   // open file
     if (!readingFile) {cerr << "Error! File not found!" << std::endl;}      // Check existing
     int numberLine = 0;
@@ -16,6 +16,7 @@ void FileToLine(const string& pathToFile,string strArray[]) {
         numberLine++;
     readingFile.close();    //close file
     cout << "Reading and copying files has been completed!" <<endl;
+    return numberLine;
 }
 
 // Parsing string format x,y to point X and Y coordinates
@@ -35,4 +36,32 @@ void parseLineToPoint(string str[], Point points[], int quantity)
         cout<< "#" << i-1 <<"\tX: " << *points[i - 1].X << "\tY: " << *points[i - 1].Y << endl;
     }
     cout << "Conversion of coordinates to points has been completed!" << endl;
+}
+
+void parsingRoutePoint(Point point[],string str[],  int const quantityPoints = 0) {
+    int numPoint[quantityPoints];
+    for (int i = 1; i !=quantityPoints; i++) {
+
+        size_t pos = str[i].find(',');
+        string num_str = str[i].substr(0,pos);
+        numPoint[i - 1] = stoi(num_str);
+
+        if(numPoint[i-1] == -1) break;
+
+        str[i].erase(0, pos + 1);
+        pos = str[i].find(',');
+        *point[i-1].X = stod(str[i].substr(0, pos));
+
+        str[i].erase(0, pos+1);
+        pos = str[i].find(',');
+        *point[i-1].Y = stod(str[i].substr(0, pos));
+
+        cout.precision(8);
+        cout<<"#" << numPoint[i-1] << "\t";
+         point[i - 1].ConsolePrintValues();
+    }
+}
+int saveDataFile()
+{
+
 }

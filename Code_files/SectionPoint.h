@@ -72,13 +72,17 @@ private:
 
 //Calculating tangents, angels and distance with coordinates X and Y of two Points objects
 	void AngleAndDistanceComputing(Point init, Point fin);
+    static double haversine(Point init, Point fin);
 	Point p0;
 	Point p1;
 	float tg;
 };
 
-void FileToLine(const std::string& pathToFile,std::string strArray[]);
+int readingFileToString(const std::string& pathToFile, std::string strArray[]);
 
 void parseLineToPoint(std::string str[], Point points[], int quantity = 0);
+
+void parsingRoutePoint(Point point[], std::string str[], int const quantityPoints);
+
 
 #endif // SECTION_POINTS

@@ -58,9 +58,26 @@ ________________________________________________________________________________
 	void Section::AngleAndDistanceComputing(Point init, Point fin) {
 		this->tg = (*fin.Y - *init.Y) / (*fin.X - *init.X);
 		angle = atan(tg) * 57.29577;
-		this->distance = sqrt(pow((*init.X - *fin.X), 2) + pow((*init.Y - *fin.Y), 2));
+        this->distance = haversine(init, fin);
+        double R = 6'356'863;
+
+
 	}
 
+    double Section::haversine(Point init, Point fin) {
+
+        double R = 6'356'863;  // Earth's radius
+
+        double phi1 = M_PI / 180.0 * *init.X;
+        double phi2 = M_PI / 180.0 * *fin.X;
+        double delta_phi = M_PI / 180.0 * (*fin.X - *init.X);
+        double delta_lambda = M_PI / 180.0 * (*fin.Y - *init.Y);
+
+        double a = sin(delta_phi / 2.0) * sin(delta_phi / 2.0) + cos(phi1) * cos(phi2) * sin(delta_lambda / 2.0) * sin(delta_lambda / 2.0);
+        double c = asin(sqrt(a));
+
+        return 2.0 * R * c;
+    }
     // Public
 	double distance;		// Distance from Point to Point
 	double angleToRotation; // Angle of Rotation, delta angeles
