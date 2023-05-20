@@ -22,7 +22,7 @@ int main() {
     for (int i = 0; i != quantity - 3; i++ ) {
 
         sections[i].setPoints(points[i], points[i+1]);
-        totalDist+= sections[i].distance;
+        totalDist+= sections[i].distance * 1.3;
         if (sections[i].distance == 0){
             cout << "Distance>> " << totalDist << endl;
             totalDist = 0;

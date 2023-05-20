@@ -1,6 +1,6 @@
-﻿#include <iostream>
+﻿#include <cmath>
+#include <iostream>
 #include "SectionPoint.h"
-#include <cmath>
 #include <string>
 /*____________________________________________________________________________________________________________
 	    Methods and parameter of point class. Point includes two parameters, it's X and Y coordinates
@@ -57,11 +57,8 @@ ________________________________________________________________________________
     //Calculating tangents, angels and distance with coordinates X and Y of two Points objects
 	void Section::AngleAndDistanceComputing(Point init, Point fin) {
 		this->tg = (*fin.Y - *init.Y) / (*fin.X - *init.X);
-		angle = atan(tg) * 57.29577;
+		angle = std::atan(tg) * 57.29577;
         this->distance = haversine(init, fin);
-        double R = 6'356'863;
-
-
 	}
 
     double Section::haversine(Point init, Point fin) {

@@ -61,7 +61,3 @@ void parsingRoutePoint(Point point[],string str[],  int const quantityPoints = 0
          point[i - 1].ConsolePrintValues();
     }
 }
-int saveDataFile()
-{
-
-}
